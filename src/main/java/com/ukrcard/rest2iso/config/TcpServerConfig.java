@@ -9,6 +9,7 @@ import org.springframework.integration.ip.tcp.TcpInboundGateway;
 import org.springframework.integration.ip.tcp.connection.AbstractServerConnectionFactory;
 import org.springframework.integration.ip.tcp.connection.TcpNioServerConnectionFactory;
 import org.springframework.messaging.MessageChannel;
+import org.springframework.web.client.RestTemplate;
 
 @Configuration
 public class TcpServerConfig {
@@ -35,6 +36,11 @@ public class TcpServerConfig {
         tcpInboundGateway.setConnectionFactory(serverConnectionFactory);
         tcpInboundGateway.setRequestChannel(inboundChannel);
         return tcpInboundGateway;
+    }
+
+    @Bean
+    public RestTemplate getRestTemplate() {
+        return new RestTemplate();
     }
 
 }
